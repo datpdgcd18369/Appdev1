@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication1.Models.Toppic>
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+<table class="table">
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.Name
+            </td>
+
+        </tr>
+    }
+
+</table>
+<div class="form-group">
+    <a href="@Url.Action("Index", "Courses")" class="btn btn-primary">
+        <i class="fas fa-arrow-left"></i>
+
+    </a>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

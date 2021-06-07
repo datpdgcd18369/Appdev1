@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication1.Models.Toppic>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Topic</h2>
+
+<h2>List Curses</h2>
+
+<div class="form-group">
+    @Html.ActionLink(
+             "Create a new Course",
+             "Create",
+             "Topics",
+             null,
+             new { @class = "btn btn-primary" }
+             )
+</div>
+<table class="table">
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Course</th>
+        <th scope="col">Action</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Course.Name
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Topic", "SlectbyId", new { id = item.Id }, new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn - warning" })
+            </td>
+        </tr>
+    }
+
+</table>
+

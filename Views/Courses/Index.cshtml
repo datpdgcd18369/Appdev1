@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication1.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Curses</h2>
+    <div class="form-group">
+        @Html.ActionLink(
+         "Create a new Course",
+         "Create",
+         "Courses",
+         null,
+         new { @class = "btn btn-primary" }
+         )
+        @Html.ActionLink(
+         "Create a new Toppic",
+         "Create",
+         "Topics",
+         null,
+         new { @class = "btn btn-primary" }
+         )
+    </div>
+
+
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.StartDateTime
+                </td>
+                <td>
+                    @item.EndDateTime
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Detail", new { id = item.Id }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn - warning" })
+                    @Html.ActionLink("CreateTopic", "CreateTopic", "Topics", new { id = item.Id }, new { @class = "btn - warning" })
+                </td>
+            </tr>
+        }
+    </table>
+
